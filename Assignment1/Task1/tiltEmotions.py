@@ -38,6 +38,10 @@ DIM_Y = (60,  55,   0)   # dimmed yellow
 DIM_W = (50,  50,  50)   # dimmed white
 DIM_B = (0,    0,  50)   # dimmed blue
 
+#sick face colours
+DIM_G = (0, 50, 0) # dimmed green
+DG = (0, 100, 0) # dark green
+
 #animation frames
 scared_frames = [
     [
@@ -358,6 +362,74 @@ funny_frames = [
     ],
 ]
 
+sick_frames = [
+    # middle
+    [
+        b, b, DIM_G, DIM_G, DIM_G, DIM_G, b, b,
+        b, DIM_G, DG, DG, DG, DG, DIM_G, b,
+        DIM_G, DG, W, DG, DG, W, DG, DIM_G,
+        DIM_G, DG, DG, DG, DG, DG, DG, DIM_G,
+        DIM_G, DG, DG, T, T, DG, DG, DIM_G,
+        DIM_G, DG, T, T, T, T, DG, DIM_G,
+        b, DIM_G, T, T, T, T, DIM_G, b,
+        b, b, DIM_G, DIM_G, DIM_G, DIM_G, b, b,
+    ],
+    #shift left
+    [
+        b, DIM_G, DIM_G, DIM_G, DIM_G, b, b, b,
+        DIM_G, DG, DG, DG, DG, DIM_G, b, b,
+        DG, W, DG, DG, W, DG, DIM_G, b, 
+        DG, DG, DG, DG, DG, DG, DIM_G, b,
+        DG, DG, T, T, DG, DG, DIM_G, b,
+        DG, T, T, T, T, DG, DIM_G, b, 
+        DIM_G, T, T, T, T, DIM_G, b, b,
+        b, DIM_G, DIM_G, DIM_G, DIM_G, b, b, b, 
+    ],
+    #shift up left
+    [
+        DIM_G, DG, DG, DG, DG, DIM_G, b, b,
+        DG, W, DG, DG, W, DG, DIM_G, b, 
+        DG, DG, DG, DG, DG, DG, DIM_G, b,
+        DG, DG, T, T, DG, DG, DIM_G, b,
+        DG, T, T, T, T, DG, DIM_G, b, 
+        DIM_G, T, T, T, T, DIM_G, b, b,
+        b, DIM_G, DIM_G, DIM_G, DIM_G, b, b, b,
+        b, b, b, b, b, b, b, b, 
+    ],
+    # middle
+    [
+        b, b, DIM_G, DIM_G, DIM_G, DIM_G, b, b,
+        b, DIM_G, DG, DG, DG, DG, DIM_G, b,
+        DIM_G, DG, W, DG, DG, W, DG, DIM_G,
+        DIM_G, DG, DG, DG, DG, DG, DG, DIM_G,
+        DIM_G, DG, DG, T, T, DG, DG, DIM_G,
+        DIM_G, DG, T, T, T, T, DG, DIM_G,
+        b, DIM_G, T, T, T, T, DIM_G, b,
+        b, b, DIM_G, DIM_G, DIM_G, DIM_G, b, b,
+    ],
+    # Shift right
+    [
+        b, b, b, DIM_G, DIM_G, DIM_G, DIM_G, b, 
+        b, b, DIM_G, DG, DG, DG, DG, DIM_G, 
+        b, DIM_G, DG, W, DG, DG, W, DG, 
+        b, DIM_G, DG, DG, DG, DG, DG, DG, 
+        b, DIM_G, DG, DG, T, T, DG, DG, 
+        b, DIM_G, DG, T, T, T, T, DG,
+        b, b, DIM_G, T, T, T, T, DIM_G,
+        b, b, b, DIM_G, DIM_G, DIM_G, DIM_G, b,
+    ],
+    # Shift down right
+    [
+        b, b, b, b, b, b, b, b,
+        b, b, b, DIM_G, DIM_G, DIM_G, DIM_G, b, 
+        b, b, DIM_G, DG, DG, DG, DG, DIM_G, 
+        b, DIM_G, DG, W, DG, DG, W, DG, 
+        b, DIM_G, DG, DG, DG, DG, DG, DG, 
+        b, DIM_G, DG, DG, T, T, DG, DG, 
+        b, DIM_G, DG, T, T, T, T, DG,
+        b, b, DIM_G, T, T, T, T, DIM_G,
+    ],
+]
 
 
 ANIMATIONS = {
@@ -366,11 +438,14 @@ ANIMATIONS = {
     "Hungry": hungry_frames,
     "Jumpy":  jumpy_frames,
     "Funny":  funny_frames,
+    "Sick":   sick_frames,
 }
  
 face_names = list(ANIMATIONS.keys())
  
 TILT_THRESHOLD = 30
+FLIP_THRESHOLD = 60   # degrees change to trigger sick
+FLIP_TIME      = 0.5  # seconds window to detect the flip
  
 def get_mood_index(pitch, roll):
     # roll is already converted to -180 to 180 before calling this
@@ -394,6 +469,8 @@ current_frame = 0
 paused = False
 last_roll = 0
 last_roll_time = time.time()
+sick_until = 0      # timestamp - stay sick until this time has passed
+SICK_DURATION = 3.0   # seconds to show sick after flip detected
  
 FRAME_DELAY = 0.4
  
@@ -432,7 +509,19 @@ while True:
     roll_change = abs(roll - last_roll)
     time_diff   = now - last_roll_time
  
+    if roll_change > FLIP_THRESHOLD and time_diff < FLIP_TIME:
+        sick_until = now + SICK_DURATION
+        if current_index != face_names.index("Sick"):
+            current_index = face_names.index("Sick")
+            current_frame = 0
+            print("Showing: Sick")
+            sense.set_pixels(ANIMATIONS[face_names[current_index]][0])
  
+    elif now < sick_until:
+        # still within sick duration, keep animating sick frames
+        frames = ANIMATIONS[face_names[current_index]]
+        current_frame = (current_frame + 1) % len(frames)
+        sense.set_pixels(frames[current_frame])
  
     else:
         new_index = get_mood_index(pitch, roll)
