@@ -2,8 +2,6 @@ from sense_hat import SenseHat
 from PIL import ImageColor
 import time
 
-sense = SenseHat()
-
 # General colours
 R = (255, 0,   0) # red
 G = (0,   255, 0) # green
@@ -34,9 +32,9 @@ KG = ImageColor.getcolor("#4CAF50", "RGB")  # grass
 
 
 #Sleep y colours
-DIM_Y = (60,  55,   0)   # dimmed yellow
-DIM_W = (50,  50,  50)   # dimmed white
-DIM_B = (0,    0,  50)   # dimmed blue
+DIM_Y = (60,  55,   0) # dimmed yellow
+DIM_W = (50,  50,  50) # dimmed white
+DIM_B = (0,    0,  50) # dimmed blue
 
 #sick face colours
 DIM_G = (0, 50, 0) # dimmed green
@@ -230,91 +228,6 @@ jumpy_frames = [
     ],   
 ]
 
-sleepy_frames = [
-    #right most
-    [
-        b, b, DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B,
-        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_B, b,
-        DIM_Y, DIM_W, DIM_W, DIM_Y, DIM_Y, DIM_B, DIM_W, DIM_Y,
-        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B,
-        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-    ],
-    [
-        b, b, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, b,
-        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_Y, b,
-        DIM_Y, DIM_W, DIM_W, DIM_Y, DIM_B, DIM_W, DIM_W, DIM_Y,
-        DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y,
-        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-    ],
-    [
-        b, b, DIM_B, DIM_B, DIM_B, DIM_B, b, b,
-        b, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_Y, DIM_Y, b,
-        DIM_Y, DIM_W, DIM_W, DIM_B, DIM_Y, DIM_W, DIM_W, DIM_Y,
-        DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y,
-        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-    ],
-    [
-        b, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, b, b,
-        b, DIM_Y, DIM_Y, DIM_B, DIM_Y, DIM_Y, DIM_Y, b,
-        DIM_Y, DIM_W, DIM_B, DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_Y,
-        DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y, DIM_Y,
-        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-    ],
-    #left most
-    [
-        DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y, b, b,
-        b, DIM_Y, DIM_B, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-        DIM_Y, DIM_B, DIM_W, DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_Y,
-        DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-    ],
-    [
-        b, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, b, b,
-        b, DIM_Y, DIM_Y, DIM_B, DIM_Y, DIM_Y, DIM_Y, b,
-        DIM_Y, DIM_W, DIM_B, DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_Y,
-        DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y, DIM_Y,
-        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-    ],
-    [
-        b, b, DIM_B, DIM_B, DIM_B, DIM_B, b, b,
-        b, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_Y, DIM_Y, b,
-        DIM_Y, DIM_W, DIM_W, DIM_B, DIM_Y, DIM_W, DIM_W, DIM_Y,
-        DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y,
-        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-    ],
-    [
-        b, b, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, b,
-        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_Y, b,
-        DIM_Y, DIM_W, DIM_W, DIM_Y, DIM_B, DIM_W, DIM_W, DIM_Y,
-        DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y,
-        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-    ],
-]
-
 funny_frames = [
     # 0 degrees
     [
@@ -440,102 +353,105 @@ ANIMATIONS = {
     "Funny":  funny_frames,
     "Sick":   sick_frames,
 }
- 
-face_names = list(ANIMATIONS.keys())
- 
-TILT_THRESHOLD = 30
-FLIP_THRESHOLD = 60   # degrees change to trigger sick
-FLIP_TIME      = 0.5  # seconds window to detect the flip
- 
-def get_mood_index(pitch, roll):
-    # roll is already converted to -180 to 180 before calling this
-    if pitch > 180:
-        pitch -= 360
- 
-    if roll > TILT_THRESHOLD:
-        return face_names.index("Scared")
-    elif roll < -TILT_THRESHOLD:
-        return face_names.index("Sad")
-    elif pitch < -TILT_THRESHOLD:
-        return face_names.index("Hungry")
-    elif pitch > TILT_THRESHOLD:
-        return face_names.index("Jumpy")
-    else:
-        return face_names.index("Funny")
- 
-# initial state
-current_index = 0
-current_frame = 0
-paused = False
-last_roll = 0
-last_roll_time = time.time()
-sick_until = 0      # timestamp - stay sick until this time has passed
-SICK_DURATION = 3.0   # seconds to show sick after flip detected
- 
-FRAME_DELAY = 0.4
- 
-# show first frame
-sense.set_pixels(ANIMATIONS[face_names[current_index]][0])
-print("Showing: " + face_names[current_index])
- 
-while True:
-    # check joystick
-    for event in sense.stick.get_events():
-        if event.action != "pressed":
-            continue
-        if event.direction == "middle":
-            paused = not paused
 
-        elif event.direction == "down":
-            sense.clear()
-            print("End")
-            exit()
+TILT_THRESHOLD = 30
+FLIP_THRESHOLD = 60
+FLIP_TIME = 0.5
+SICK_DURATION = 3.0
+FRAME_DELAY = 0.4
+
+# update for OOP style code
+class TiltEmotions:
+    def __init__(self):
+        self.sense = SenseHat()
+        self.face_names = list(ANIMATIONS.keys())
+        self.current_index = 0
+        self.current_frame = 0
+        self.paused = False
+        self.last_roll = 0
+        self.last_roll_time = time.time()
+        self.sick_until = 0
  
-    if paused:
-        time.sleep(FRAME_DELAY)
-        continue
+    def run(self):
+        self.sense.set_pixels(ANIMATIONS[self.face_names[self.current_index]][0])
+        print("Showing: " + self.face_names[self.current_index])
  
-    orientation = sense.get_orientation()
-    pitch = orientation["pitch"]
-    roll  = orientation["roll"]
+        while True:
+            # check joystick
+            for event in self.sense.stick.get_events():
+                if event.action != "pressed":
+                    continue
+                if event.direction == "middle":
+                    self.paused = not self.paused
+
+                elif event.direction == "down":
+                    self.sense.clear()
+                    print("End")
+                    exit()
  
-    # convert roll to -180 to 180 before using it
-    if roll > 180:
-        roll -= 360
+            if self.paused:
+                time.sleep(FRAME_DELAY)
+                continue
  
-    now = time.time()
+            orientation = self.sense.get_orientation()
+            pitch = orientation["pitch"]
+            roll  = orientation["roll"]
  
-    # check if roll changed more than 60 degrees within 0.5 seconds
-    roll_change = abs(roll - last_roll)
-    time_diff   = now - last_roll_time
+            # convert pitch and roll to -180 to 180 before using it
+            if roll > 180:
+                roll -= 360
  
-    if roll_change > FLIP_THRESHOLD and time_diff < FLIP_TIME:
-        sick_until = now + SICK_DURATION
-        if current_index != face_names.index("Sick"):
-            current_index = face_names.index("Sick")
-            current_frame = 0
-            print("Showing: Sick")
-            sense.set_pixels(ANIMATIONS[face_names[current_index]][0])
+            if pitch > 180:
+                pitch -= 360
  
-    elif now < sick_until:
-        # still within sick duration, keep animating sick frames
-        frames = ANIMATIONS[face_names[current_index]]
-        current_frame = (current_frame + 1) % len(frames)
-        sense.set_pixels(frames[current_frame])
+            now = time.time()
  
-    else:
-        new_index = get_mood_index(pitch, roll)
-        if new_index != current_index:
-            current_index = new_index
-            current_frame = 0
-            print("Showing: " + face_names[current_index])
-            sense.set_pixels(ANIMATIONS[face_names[current_index]][0])
-        else:
-            frames = ANIMATIONS[face_names[current_index]]
-            current_frame = (current_frame + 1) % len(frames)
-            sense.set_pixels(frames[current_frame])
+            # check if roll changed more than 60 degrees within 0.5 seconds
+            roll_change = abs(roll - self.last_roll)
+            time_diff   = now - self.last_roll_time
  
-    last_roll = roll
-    last_roll_time = now
+            if roll_change > FLIP_THRESHOLD and time_diff < FLIP_TIME:
+                self.sick_until = now + SICK_DURATION
+                if self.current_index != self.face_names.index("Sick"):
+                    self.current_index = self.face_names.index("Sick")
+                    self.current_frame = 0
+                    print("Showing: Sick")
+                    self.sense.set_pixels(ANIMATIONS[self.face_names[self.current_index]][0])
  
-    time.sleep(FRAME_DELAY)
+            elif now < self.sick_until:
+                # still within sick duration, keep animating sick frames
+                frames = ANIMATIONS[self.face_names[self.current_index]]
+                self.current_frame = (self.current_frame + 1) % len(frames)
+                self.sense.set_pixels(frames[self.current_frame])
+ 
+            else:
+                # work out mood from orientation
+                if roll > TILT_THRESHOLD:
+                    new_index = self.face_names.index("Scared")
+                elif roll < -TILT_THRESHOLD:
+                    new_index = self.face_names.index("Sad")
+                elif pitch < -TILT_THRESHOLD:
+                    new_index = self.face_names.index("Hungry")
+                elif pitch > TILT_THRESHOLD:
+                    new_index = self.face_names.index("Jumpy")
+                else:
+                    new_index = self.face_names.index("Funny")
+ 
+                if new_index != self.current_index:
+                    self.current_index = new_index
+                    self.current_frame = 0
+                    print("Showing: " + self.face_names[self.current_index])
+                    self.sense.set_pixels(ANIMATIONS[self.face_names[self.current_index]][0])
+                else:
+                    frames = ANIMATIONS[self.face_names[self.current_index]]
+                    self.current_frame = (self.current_frame + 1) % len(frames)
+                    self.sense.set_pixels(frames[self.current_frame])
+ 
+            self.last_roll = roll
+            self.last_roll_time = now
+ 
+            time.sleep(FRAME_DELAY)
+ 
+ 
+tilt = TiltEmotions()
+tilt.run()
