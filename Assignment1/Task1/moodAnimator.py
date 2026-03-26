@@ -224,6 +224,16 @@ jumpy_frames = [
         KDP, KM, KLR, KDP, KLP, KLP, KLR, KDP,
         KG, KM, KLM, KLM, KG, KM, KLM, KG,
     ],
+    [
+        b, b, PB, PB, PB, PB, b, b,
+        b, PB, Y, Y, Y, Y, PB, b,
+        PB, Y, W, Y, Y, W, Y, PB,
+        PB, B, Y, Y, Y, Y, B, PB,
+        B, Y, T, T, T, T, Y, B,
+        PB, Y, T, T, T, T, Y, PB,
+        b, PB, T, T, T, T, PB, b,
+        b, b, PB, PB, PB, PB, b, b,
+    ],
 ]
 sleepy_frames = [
     #right most
@@ -310,6 +320,53 @@ sleepy_frames = [
         ],
 ]
 
+funny_frames = [
+    # 0 degrees
+    [
+        b, G, G, DIM_W, DIM_W, R, R, b,
+        G, G, W, W, W, W, R, R,
+        G, W, W, W, W, W, W, R,
+        DIM_W, W, B, R, R, B, W, DIM_W,
+        DIM_W, W, W, R, R, W, W, DIM_W,
+        DIM_W, W, T, T, T, T, W, DIM_W,
+        b, DIM_W, W, T, T, W, DIM_W, b,
+        b, b, DIM_W, DIM_W, DIM_W, DIM_W, b, b,
+    ],
+    # 90 degrees
+    [
+        b, b, DIM_W, DIM_W, DIM_W, G, G, b,
+        b, DIM_W, W, W, W, W, G, G,
+        DIM_W, W, T, W, B, W, W, G,
+        DIM_W, T, T, R, R, W, W, DIM_W,
+        DIM_W, T, T, R, R, W, W, DIM_W,
+        DIM_W, W, T, W, B, W, W, R,
+        b, DIM_W, W, W, W, W, R, R,
+        b, b, DIM_W, DIM_W, DIM_W, R, R, b,
+    ],
+    # 180 degrees
+    [
+        b, b, DIM_W, DIM_W, DIM_W, DIM_W, b, b,
+        b, DIM_W, W, T, T, W, DIM_W, b,
+        DIM_W, W, T, T, T, T, W, DIM_W,
+        DIM_W, W, W, R, R, W, W, DIM_W,
+        DIM_W, W, B, R, R, B, W, DIM_W,
+        R, W, W, W, W, W, W, G,
+        R, R, W, W, W, W, G, G,
+        b, R, R, DIM_W, DIM_W, G, G, b,
+    ],
+    # 270 degrees
+    [
+        b, R, R, DIM_W, DIM_W, DIM_W, b, b,
+        R, R, W, W, W, W, DIM_W, b,
+        R, W, W, B, W, T, W, DIM_W,
+        DIM_W, W, W, R, R, T, T, DIM_W,
+        DIM_W, W, W, R, R, T, T, DIM_W,
+        G, W, W, B, W, T, W, DIM_W,
+        G, G, W, W, W, W, DIM_W, b,
+        b, G, G, DIM_W, DIM_W, DIM_W, b, b,
+    ],
+]
+
 #artifact but want to keep 
 FRAMES = {
     # "Pikachu": [
@@ -351,6 +408,7 @@ ANIMATIONS = {
     "Sad": sad_frames,
     "Hungry": hungry_frames,
     "Jumpy": jumpy_frames,
+    "Funny": funny_frames,
 }
 
 #face names as a list to cycle through them
