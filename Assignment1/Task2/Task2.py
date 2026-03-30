@@ -5,10 +5,11 @@ except ImportError:
 
 import math
 
-sense = SenseHat()
-
-# default value
-x = 16
+class SimpleCalc:
+    def __init__(self, sense):
+        self.sense = sense
+        # default value
+        self.x = 16
 
 
 sense.show_message(str(x))
