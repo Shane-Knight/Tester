@@ -224,100 +224,91 @@ jumpy_frames = [
         KDP, KM, KLR, KDP, KLP, KLP, KLR, KDP,
         KG, KM, KLM, KLM, KG, KM, KLM, KG,
     ],
-    [
-        b, b, PB, PB, PB, PB, b, b,
-        b, PB, Y, Y, Y, Y, PB, b,
-        PB, Y, W, Y, Y, W, Y, PB,
-        PB, B, Y, Y, Y, Y, B, PB,
-        B, Y, T, T, T, T, Y, B,
-        PB, Y, T, T, T, T, Y, PB,
-        b, PB, T, T, T, T, PB, b,
-        b, b, PB, PB, PB, PB, b, b,
-    ],
 ]
+
 sleepy_frames = [
     #right most
-        [
-            b, b, DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B,
-            b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_B, b,
-            DIM_Y, DIM_W, DIM_W, DIM_Y, DIM_Y, DIM_B, DIM_W, DIM_Y,
-            DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B,
-            DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-            DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-            b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-            b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-        ],
-        [
-            b, b, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, b,
-            b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_Y, b,
-            DIM_Y, DIM_W, DIM_W, DIM_Y, DIM_B, DIM_W, DIM_W, DIM_Y,
-            DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y,
-            DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-            DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-            b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-            b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-        ],
-        [
-            b, b, DIM_B, DIM_B, DIM_B, DIM_B, b, b,
-            b, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_Y, DIM_Y, b,
-            DIM_Y, DIM_W, DIM_W, DIM_B, DIM_Y, DIM_W, DIM_W, DIM_Y,
-            DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y,
-            DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-            DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-            b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-            b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-        ],
-        [
-            b, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, b, b,
-            b, DIM_Y, DIM_Y, DIM_B, DIM_Y, DIM_Y, DIM_Y, b,
-            DIM_Y, DIM_W, DIM_B, DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_Y,
-            DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y, DIM_Y,
-            DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-            DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-            b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-            b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-        ],
-        #left most
-        [
-            DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y, b, b,
-            b, DIM_Y, DIM_B, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-            DIM_Y, DIM_B, DIM_W, DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_Y,
-            DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-            DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-            DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-            b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-            b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-        ],
-        [
-            b, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, b, b,
-            b, DIM_Y, DIM_Y, DIM_B, DIM_Y, DIM_Y, DIM_Y, b,
-            DIM_Y, DIM_W, DIM_B, DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_Y,
-            DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y, DIM_Y,
-            DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-            DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-            b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-            b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-        ],
-        [
-            b, b, DIM_B, DIM_B, DIM_B, DIM_B, b, b,
-            b, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_Y, DIM_Y, b,
-            DIM_Y, DIM_W, DIM_W, DIM_B, DIM_Y, DIM_W, DIM_W, DIM_Y,
-            DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y,
-            DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-            DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-            b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-            b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-        ],
-        [
-            b, b, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, b,
-            b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_Y, b,
-            DIM_Y, DIM_W, DIM_W, DIM_Y, DIM_B, DIM_W, DIM_W, DIM_Y,
-            DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y,
-            DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
-            DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
-            b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
-            b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
-        ],
+    [
+        b, b, DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B,
+        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_B, b,
+        DIM_Y, DIM_W, DIM_W, DIM_Y, DIM_Y, DIM_B, DIM_W, DIM_Y,
+        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B,
+        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
+        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
+        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
+        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
+    ],
+    [
+        b, b, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, b,
+        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_Y, b,
+        DIM_Y, DIM_W, DIM_W, DIM_Y, DIM_B, DIM_W, DIM_W, DIM_Y,
+        DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y,
+        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
+        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
+        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
+        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
+    ],
+    [
+        b, b, DIM_B, DIM_B, DIM_B, DIM_B, b, b,
+        b, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_Y, DIM_Y, b,
+        DIM_Y, DIM_W, DIM_W, DIM_B, DIM_Y, DIM_W, DIM_W, DIM_Y,
+        DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y,
+        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
+        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
+        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
+        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
+    ],
+    [
+        b, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, b, b,
+        b, DIM_Y, DIM_Y, DIM_B, DIM_Y, DIM_Y, DIM_Y, b,
+        DIM_Y, DIM_W, DIM_B, DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_Y,
+        DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y, DIM_Y,
+        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
+        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
+        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
+        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
+    ],
+    #left most
+    [
+        DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y, b, b,
+        b, DIM_Y, DIM_B, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
+        DIM_Y, DIM_B, DIM_W, DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_Y,
+        DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
+        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
+        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
+        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
+        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
+    ],
+    [
+        b, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, b, b,
+        b, DIM_Y, DIM_Y, DIM_B, DIM_Y, DIM_Y, DIM_Y, b,
+        DIM_Y, DIM_W, DIM_B, DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_Y,
+        DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y, DIM_Y,
+        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
+        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
+        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
+        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
+    ],
+    [
+        b, b, DIM_B, DIM_B, DIM_B, DIM_B, b, b,
+        b, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_Y, DIM_Y, b,
+        DIM_Y, DIM_W, DIM_W, DIM_B, DIM_Y, DIM_W, DIM_W, DIM_Y,
+        DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y, DIM_Y,
+        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
+        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
+        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
+        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
+    ],
+    [
+        b, b, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, b,
+        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_Y, b,
+        DIM_Y, DIM_W, DIM_W, DIM_Y, DIM_B, DIM_W, DIM_W, DIM_Y,
+        DIM_Y, DIM_Y, DIM_Y, DIM_B, DIM_B, DIM_B, DIM_B, DIM_Y,
+        DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y,
+        DIM_Y, DIM_Y, DIM_W, DIM_W, DIM_W, DIM_W, DIM_Y, DIM_Y,
+        b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b,
+        b, b, DIM_Y, DIM_Y, DIM_Y, DIM_Y, b, b,
+    ],
 ]
 
 funny_frames = [
@@ -402,7 +393,6 @@ FRAMES = {
     # ],
 }
 
-
 ANIMATIONS = {
     "Scared": scared_frames,
     "Sad": sad_frames,
@@ -415,8 +405,8 @@ ANIMATIONS = {
 face_names = list(ANIMATIONS.keys())
 
 
-FRAME_DELAY  = 0.4   # per frame
-RATE_LIMIT   = 3.0   # between accepted presses
+FRAME_DELAY = 0.4   # per frame
+RATE_LIMIT = 3.0   # between accepted presses
 IDLE_TIMEOUT = 15.0  # before sleep mode kicks in
 
 # initial state
@@ -490,7 +480,6 @@ while True:
  
         elif event.direction == "middle":
             paused = not paused
-            print("paused" if paused else "resumed")
  
         elif event.direction == "down":
             print("End")
