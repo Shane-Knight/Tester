@@ -2,8 +2,6 @@ from sense_hat import SenseHat
 from PIL import ImageColor
 import time
 
-sense = SenseHat()
-
 # General colours
 R = (255, 0,   0) # red
 G = (0,   255, 0) # green
@@ -358,40 +356,6 @@ funny_frames = [
     ],
 ]
 
-#artifact but want to keep 
-FRAMES = {
-    # "Pikachu": [
-    #     W,  PG, PG, W,  W,  W,  W,  PG,
-    #     W,  W,  PY, PO, W,  W,  W,  PO,
-    #     W,  W,  W,  PY, PY, PY, PY, PO,
-    #     PO, PO, W,  PY, K, PY, PY, K,
-    #     PO, PO, W,  PC, PY, PY, PY, PO,
-    #     W,  PB, W,  PY, PO, PO, PO, W,
-    #     W,  PB, PY, PO, PY, PO, PY, W,
-    #     W,  W,  PY, PO, PB, PB, PO, W,
-    # ],
-    # "Red Ghost": [
-    #     b,   b,   RGC, RGC, RGC, RGC, b,   b,
-    #     b,   RGC, RGC, RGC, RGC, RGC, RGC, b,
-    #     RGC, RGW, RGW, RGC, RGC, RGW, RGW, RGC,
-    #     RGC, RGW, RGB, RGC, RGC, RGW, RGB, RGC,
-    #     RGC, RGC, RGC, RGC, RGC, RGC, RGC, RGC,
-    #     RGC, RGC, RGC, RGC, RGC, RGC, RGC, RGC,
-    #     RGC, RGD, RGC, RGD, RGC, RGD, RGC, RGD,
-    #     b,   RGD, b,   RGD, b,   RGD, b,   RGD,
-    # ],
-
-    # "Blue Ghost": [
-    #     b,   b,   BGC, BGC, BGC, BGC, b,   b,
-    #     b,   BGC, BGC, BGC, BGC, BGC, BGC, b,
-    #     BGC, BGW, BGW, BGC, BGC, BGW, BGW, BGC,
-    #     BGC, BGW, BGB, BGC, BGC, BGW, BGB, BGC,
-    #     BGC, BGC, BGC, BGC, BGC, BGC, BGC, BGC,
-    #     BGC, BGC, BGC, BGC, BGC, BGC, BGC, BGC,
-    #     BGC, BGD, BGC, BGD, BGC, BGD, BGC, BGD,
-    #     b,   BGD, b,   BGD, b,   BGD, b,   BGD,
-    # ],
-}
 
 ANIMATIONS = {
     "Scared": scared_frames,
@@ -401,89 +365,94 @@ ANIMATIONS = {
     "Funny": funny_frames,
 }
 
-#face names as a list to cycle through them
-face_names = list(ANIMATIONS.keys())
-
 
 FRAME_DELAY = 0.4   # per frame
 RATE_LIMIT = 3.0   # between accepted presses
 IDLE_TIMEOUT = 15.0  # before sleep mode kicks in
 
-# initial state
-current_index = 0
-current_frame = 0
-paused = False
-sleeping = False
-last_press_time = 0
-last_event_time = time.time()
+#update for more OOP style code
+class MoodAnimator:
+    def __init__(self):
+        self.sense = SenseHat()
+        self.face_names = list(ANIMATIONS.keys())
+        self.current_index = 0
+        self.current_frame = 0
+        self.paused = False
+        self.sleeping = False
+        self.sleep_frame = 0
+        self.last_press_time = 0
+        self.last_event_time = time.time()
 
- 
+    def run(self):
+        # display first emoji
+        self.sense.set_pixels(ANIMATIONS[self.face_names[self.current_index]][0])
+        print("Showing: " + self.face_names[self.current_index])
 
-# display first emoji
-sense.set_pixels(ANIMATIONS[face_names[current_index]][0])
-print("Showing: " + face_names[current_index])
-
-while True:
-    # if not asleep or paused go through animation frames
-    if not paused and not sleeping:
-        frames = ANIMATIONS[face_names[current_index]]
-        current_frame = (current_frame + 1) % len(frames) # mod for looping
-        sense.set_pixels(frames[current_frame])
+        while True:
+            # if not asleep or paused go through animation frames
+            if not self.paused and not self.sleeping:
+                frames = ANIMATIONS[self.face_names[self.current_index]]
+                self.current_frame = (self.current_frame + 1) % len(frames)
+                self.sense.set_pixels(frames[self.current_frame])
  
-    # check if idle for 15 seconds
-    if not sleeping and time.time() - last_event_time >= IDLE_TIMEOUT:
-        print("im getting tired... zzz")
-        sleeping = True
-        sleep_frame = 0 
-        sense.set_pixels(sleepy_frames[0])
+            # check if idle for 15 seconds
+            if not self.sleeping and time.time() - self.last_event_time >= IDLE_TIMEOUT:
+                print("im getting tired... zzz")
+                self.sleeping = True
+                self.sleep_frame = 0
+                self.sense.set_pixels(sleepy_frames[0])
  
-    # animate the sleep face while sleeping
-    elif sleeping:
-        sleep_frame = (sleep_frame + 1) % len(sleepy_frames)
-        sense.set_pixels(sleepy_frames[sleep_frame])
+            # animate the sleep face while sleeping
+            elif self.sleeping:
+                self.sleep_frame = (self.sleep_frame + 1) % len(sleepy_frames)
+                self.sense.set_pixels(sleepy_frames[self.sleep_frame])
  
-    # check for joystick input
-    for event in sense.stick.get_events():
+            # check for joystick input
+            for event in self.sense.stick.get_events():
+                if event.action != "pressed":
+                    continue
  
-        if event.action != "pressed":
-            continue
+                now = time.time()
+                self.last_event_time = now
  
-        now = time.time()
-        last_event_time = now
+                # wake from sleep on any press
+                if self.sleeping:
+                    print("waking up")
+                    self.sleeping = False
+                    self.sense.set_pixels(ANIMATIONS[self.face_names[self.current_index]][self.current_frame])
+                    self.last_press_time = now
+                    continue
  
-        # wake from sleep on any press
-        if sleeping:
-            print("waking up")
-            sleeping = False
-            sense.set_pixels(ANIMATIONS[face_names[current_index]][current_frame])
-            last_press_time = now
-            continue
+                # ignore if within rate limit window
+                if now - self.last_press_time < RATE_LIMIT:
+                    print("too fast between inputs")
+                    continue
  
-        # ignore if within rate limit window
-        if now - last_press_time < RATE_LIMIT:
-            print("too fast between inputs")
-            continue
+                self.last_press_time = now
  
-        last_press_time = now
+                if event.direction == "right":
+                    self.current_index = (self.current_index + 1) % len(self.face_names)
+                    self.current_frame = 0
+                    print("Showing: " + self.face_names[self.current_index])
+                    self.sense.set_pixels(ANIMATIONS[self.face_names[self.current_index]][0])
  
-        if event.direction == "right":
-            current_index = (current_index + 1) % len(face_names)
-            current_frame = 0
-            print("Showing: " + face_names[current_index])
-            sense.set_pixels(ANIMATIONS[face_names[current_index]][0])
+                elif event.direction == "left":
+                    self.current_index = (self.current_index - 1) % len(self.face_names)
+                    self.current_frame = 0
+                    print("Showing: " + self.face_names[self.current_index])
+                    self.sense.set_pixels(ANIMATIONS[self.face_names[self.current_index]][0])
  
-        elif event.direction == "left":
-            current_index = (current_index - 1) % len(face_names)
-            current_frame = 0
-            print("Showing: " + face_names[current_index])
-            sense.set_pixels(ANIMATIONS[face_names[current_index]][0])
+                elif event.direction == "middle":
+                    self.paused = not self.paused
+                    print("paused" if self.paused else "resumed")
  
-        elif event.direction == "middle":
-            paused = not paused
+                elif event.direction == "down":
+                    print("End")
+                    self.sense.clear()
+                    exit()
  
-        elif event.direction == "down":
-            print("End")
-            sense.clear()
-            exit()
+            time.sleep(FRAME_DELAY)
  
-    time.sleep(FRAME_DELAY)
+ 
+animator = MoodAnimator()
+animator.run()
