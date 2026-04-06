@@ -31,10 +31,10 @@ KLM = ImageColor.getcolor("#D81B60", "RGB")  # light maroon
 KG = ImageColor.getcolor("#4CAF50", "RGB")  # grass
 
 
-#Sleep y colours
-DIM_Y = (60,  55,   0) # dimmed yellow
-DIM_W = (50,  50,  50) # dimmed white
-DIM_B = (0,    0,  50) # dimmed blue
+# sleepy colours
+DIM_Y = (60, 55, 0) # dimmed yellow
+DIM_W = (50, 50, 50) # dimmed white
+DIM_B = (0, 0, 50) # dimmed blue
 
 #sick face colours
 DIM_G = (0, 50, 0) # dimmed green

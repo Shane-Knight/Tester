@@ -32,9 +32,9 @@ KG = ImageColor.getcolor("#4CAF50", "RGB")  # grass
 
 
 #Sleep y colours
-DIM_Y = (60,  55,   0)   # dimmed yellow
-DIM_W = (50,  50,  50)   # dimmed white
-DIM_B = (0,    0,  50)   # dimmed blue
+DIM_Y = (60, 55, 0)   # dimmed yellow
+DIM_W = (50, 50, 50)   # dimmed white
+DIM_B = (0, 0, 50)   # dimmed blue
 
 #animation frames
 scared_frames = [
@@ -422,14 +422,14 @@ class MoodAnimator:
                     self.sense.set_pixels(ANIMATIONS[self.face_names[self.current_index]][self.current_frame])
                     self.last_press_time = now
                     continue
- 
+
                 # ignore if within rate limit window
                 if now - self.last_press_time < RATE_LIMIT:
                     print("too fast between inputs")
                     continue
- 
+
                 self.last_press_time = now
- 
+
                 if event.direction == "right":
                     self.current_index = (self.current_index + 1) % len(self.face_names)
                     self.current_frame = 0

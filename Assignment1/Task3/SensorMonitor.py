@@ -26,8 +26,8 @@ class SensorMonitor:
         # load thresholds from config file
         self.thresholds = json.load(open("enviro_config.json"))
 
-        print("Database path: " + os.path.abspath(DB_NAME))
-        self.create_db()
+        print("Database path: " + os.path.abspath(DATABASE_NAME))
+        self.initialise_database()
 
     def get_status_colour(self, status):
         # return a colour based on the status string
